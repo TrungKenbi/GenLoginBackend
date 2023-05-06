@@ -24,3 +24,13 @@ type RegisterReq struct {
 
 type RegisterReply struct {
 }
+
+type MeReq struct {
+}
+
+type MeReply struct {
+	CreatedAt string `json:"created_at"`
+	ID        int    `json:"id"`
+	Email     string `json:"email"`
+	FirstName string `json:"firstName"`
+}

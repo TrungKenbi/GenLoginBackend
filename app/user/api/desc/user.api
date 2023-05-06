@@ -22,12 +22,43 @@ type (
 
 	RegisterReply {
 	}
+
+	MeReq {
+	}
+
+	MeReply {
+		CreatedAt string `json:"created_at"`
+		ID        int    `json:"id"`
+		Email     string `json:"email"`
+		FirstName string `json:"firstName"`
+
+		//	"first_name": "Trung",
+		//	"id": 12537,
+		//	"last_login": "2023-05-05T17:26:33.199635+00:00",
+		//	"last_name": "Duong",
+		//	"phone_number": "0363652806",
+		//	"plan": {
+		//	"id": 1,
+		//	"is_active": true,
+		//	"name": "Free Plan",
+		//	"plan_expired_at": null,
+		//	"price": 0.0,
+		//	"profile_limit": 9999,
+		//	"share_member_limit": 0,
+		//	"sub_account_limit": null
+		//	},
+		//	"social_network": "https://facebook.com/trungdlp",
+		//	"updated_at": "2023-05-05T13:05:03.435965+00:00"
+	}
 )
 
 service user {
 	@handler login
-	post /api/user/login (LoginReq) returns (LoginReply)
+	post /login (LoginReq) returns (LoginReply)
 	
 	@handler register
-	post /api/user/register (RegisterReq) returns (RegisterReply)
+	post /register (RegisterReq) returns (RegisterReply)
+	
+	@handler me
+	get /me (MeReq) returns (MeReply)
 }

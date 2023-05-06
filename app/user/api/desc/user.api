@@ -1,0 +1,33 @@
+type (
+	LoginReq {
+		Username string `json:"username"`
+		Password string `json:"password"`
+	}
+
+	LoginReply {
+		Id           int64  `json:"id"`
+		Name         string `json:"name"`
+		Gender       string `json:"gender"`
+		AccessToken  string `json:"accessToken"`
+		AccessExpire int64  `json:"accessExpire"`
+		RefreshAfter int64  `json:"refreshAfter"`
+	}
+
+	RegisterReq {
+		Fullname string `json:"fullname"`
+		Email    string `json:"email"`
+		Username string `json:"username"`
+		Password string `json:"password"`
+	}
+
+	RegisterReply {
+	}
+)
+
+service user {
+	@handler login
+	post /api/user/login (LoginReq) returns (LoginReply)
+	
+	@handler register
+	post /api/user/register (RegisterReq) returns (RegisterReply)
+}
